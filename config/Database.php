@@ -24,5 +24,4 @@ class DbConnect{
 
 		return $con;
 	}
-
 }

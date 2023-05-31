@@ -11,7 +11,7 @@ $conn = $db->connect();
 
 $product = new Product($conn);
 
-$products = file_get_contents('../../product.json');
+$products = file_get_contents('data/product.json');
 $json_product = json_decode($products, true);
 
 //Creating dummy products
