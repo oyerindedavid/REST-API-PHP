@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "name": "Product 1",
+            "price": 23.5,
+            "category_id": 1
+        },
+        {
+            "name": "Product 2",
+            "price": 30.2,
+            "category_id": 2
+        },
+        {
+            "name": "Product 3",
+            "price": 17.5,
+            "category_id": 3
+        },
+        {
+            "name": "Product 4",
+            "price": 16.1,
+            "category_id": 4
+        }
+    ]
+}
