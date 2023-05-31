@@ -10,35 +10,56 @@ require_once "../../config/config.php";
 require_once "../../models/Product.php";
 require_once "../../helper/helper.php";
 
-$db = new DbConnect();
+if(!isset($_SERVER['PHP_AUTH_USER'])){
+    header('WWW-Authenticate: Basic realm="Private Area" ');
+    header ("HTTP/1.0 401 Unauthorized");
 
-$conn = $db->connect();
+    $result = ["status" => 401, "message"=>"You need to provide authentication for access."];
+    echo json_encode($result);
+    exit;
 
-//Instantiate product class
-$product = new Product($conn);
+}else{
+    if(($_SERVER['PHP_AUTH_USER'] == $_ENV['API_BASIC_AUTH_USER'] && ($_SERVER['PHP_AUTH_PW'] == $_ENV['API_BASIC_AUTH_PASS'] ))){
+        
+        $db = new DbConnect();
 
-$prod = json_decode(file_get_contents("php://input"));
+        $conn = $db->connect();
 
-$product_id = cleanData($conn, $prod->id);;
-$name = cleanData($conn, $prod->name);
-$price = cleanData($conn, $prod->price);
-$category_id = cleanData($conn, $prod->category_id);
+        //Instantiate product class
+        $product = new Product($conn);
 
-try{
-    $res = $product->updateProduct(
-                        product_id: $product_id,
-                        name: $name, 
-                        price: $price, 
-                        category_id: $category_id
-                    );
-    
-    $response['status'] =  "Success";
-    $response['message'] = 'Product updated successfully';
+        $prod = json_decode(file_get_contents("php://input"));
 
-    echo json_encode($response);
-}catch(Exception $e){
-    $response['status'] = 'Failed';
-    $response['message'] = $e->getMessage();
+        $product_id = cleanData($conn, $prod->id);;
+        $name = cleanData($conn, $prod->name);
+        $price = cleanData($conn, $prod->price);
+        $category_id = cleanData($conn, $prod->category_id);
 
-    echo json_encode($response);
+        try{
+            $res = $product->updateProduct(
+                                product_id: $product_id,
+                                name: $name, 
+                                price: $price, 
+                                category_id: $category_id
+                            );
+            
+            $response['status'] =  "Success";
+            $response['message'] = 'Product updated successfully';
+
+            echo json_encode($response);
+        }catch(Exception $e){
+            $response['status'] = 'Failed';
+            $response['message'] = $e->getMessage();
+
+            echo json_encode($response);
+        }
+
+    }else{
+        header('WWW-Authenticate: Basic realm="Private Area" ');
+        header ("HTTP/1.0 401 Unauthorized");
+        $result = ["status" => 401, "message"=>"Invalid authentication credentials"];
+        echo json_encode($result);
+    }
 }
+
+
