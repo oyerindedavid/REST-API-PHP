@@ -1,6 +1,6 @@
 This repo helps build a PHP RESTFUL API
 
-Below is a guilde on how to use.
+Below is a guide on how to use.
 
 Follow the instruction below
 1. Download the repo on your machine
