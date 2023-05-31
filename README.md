@@ -1,8 +1,9 @@
-This repo helps build a PHP RESTFUL API
+## PHP RESTFUL API
 
-Below is a guide on how to use.
+Installation guide.
 
-Follow the instruction below
+Follow the instruction below:
+
 1. Download the repo on your machine
 2. The query file in the sql folder contain the database schemas
 3. The data folder contains the sample data
