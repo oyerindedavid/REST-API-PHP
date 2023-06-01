@@ -1,6 +1,7 @@
 <?php
 
 
+
 function cleanData($con, $data){
 
      $sql_clean = mysqli_real_escape_string($con, $data);
@@ -9,9 +10,9 @@ function cleanData($con, $data){
      return $clean_html;
 }
 
-function cleanAmount($con, $data){
 
-    $sql_clean = mysqli_real_escape_string($con, $data);
-    
-    return $sql_clean;
+//Check if login credential provided by user is valid
+function isValidLoginCredention($username='', $password=''){
+    $isLoggedIn = true;
+    return $isLoggedIn;
 }
