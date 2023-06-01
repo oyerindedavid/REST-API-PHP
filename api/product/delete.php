@@ -7,6 +7,7 @@ header("Content-Type: application/json; charset=UTF-8");
 
 require_once "../../config/Database.php";
 require_once "../../models/Product.php";
+require_once "../validate.php";
 
 $db = new DbConnect();
 $conn = $db->connect();

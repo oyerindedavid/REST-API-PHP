@@ -16,15 +16,15 @@ use Firebase\JWT\JWT;
 if(isValidLoginCredention()){
     $secrete_key = "mysecretekey";
     $issued_at = new DateTimeImmutable();
-    $expire = $issued_at->modify('+10 minutes')->getTimestamp();
-    $server_name = "localhost"; //Your domain name e.g www.domain.com
+    $expire = $issued_at->modify('+10 minutes')->getTimestamp();  //Add 10 minutes
+    $server_name = "localhost"; //Domain name e.g www.domain.com
     $username = "username";  //Optional
 
     $data = [
-     'iat' => $issued_at->getTimestamp(),
-     'iss' => $server_name, 
-     'nbf' => $issued_at->getTimestamp(),
-     'exp' => $expire,
+     'iat' => $issued_at->getTimestamp(), // Issued at: time when the token was generated
+     'iss' => $server_name,               // Issuer
+     'nbf' => $issued_at->getTimestamp(), // Not before
+     'exp' => $expire,                    // Expire
      'username' => $username
     ];
 

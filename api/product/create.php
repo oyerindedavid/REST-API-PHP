@@ -9,6 +9,7 @@ require_once "../../config/Database.php";
 require_once "../../config/config.php";
 require_once "../../models/Product.php";
 require_once "../../helper/helper.php";
+require_once "../validate.php";
 
 $db = new DbConnect();
 
