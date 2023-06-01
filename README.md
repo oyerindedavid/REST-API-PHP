@@ -10,4 +10,6 @@ Follow the instruction below:
 4. The query.php can be used to add the sample data to the database
 
 ### Implementing the JWT Authentication
-5. Download the firebase php-jwt with composer require firebase/php-jwt
+5. Install the firebase php-jwt with composer require firebase/php-jwt
+
+api/authenticate : To generate an access token
